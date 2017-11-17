@@ -457,7 +457,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
 
         jLabel28.setText("Estadio");
 
-        jLabel29.setText("jLabel29");
+        jLabel29.setText("Modificar Equipos");
 
         javax.swing.GroupLayout ModificarEquiposLayout = new javax.swing.GroupLayout(ModificarEquipos.getContentPane());
         ModificarEquipos.getContentPane().setLayout(ModificarEquiposLayout);
@@ -466,7 +466,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
             .addGroup(ModificarEquiposLayout.createSequentialGroup()
                 .addGap(147, 147, 147)
                 .addComponent(jLabel29)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
             .addGroup(ModificarEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ModificarEquiposLayout.createSequentialGroup()
                     .addGap(43, 43, 43)
@@ -790,7 +790,14 @@ public class Liga_Espanola extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_modificarJugadoresMouseClicked
 
     private void jb_ModEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModEquiposMouseClicked
-
+        DefaultListModel modelol = (DefaultListModel) ListaEquipos.getModel();
+        modelol.addElement(new Equipos(tf_nombreequipo1.getText(), Integer.parseInt(tf_presupuesto1.getText()), Integer.parseInt(tf_copas1.getText()), tf_nombreestadio1.getText()));
+        DefaultTreeModel m = (DefaultTreeModel) jt_Distrub.getModel();
+        DefaultMutableTreeNode LigaEspanola = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode Equipo;
+        Equipo = new DefaultMutableTreeNode(new Equipos(tf_nombreequipo1.getText(), Integer.parseInt(tf_presupuesto1.getText()), Integer.parseInt(tf_copas1.getText()), tf_nombreestadio1.getText()));
+        LigaEspanola.add(Equipo);
+        m.reload();
 
     }//GEN-LAST:event_jb_ModEquiposMouseClicked
 
