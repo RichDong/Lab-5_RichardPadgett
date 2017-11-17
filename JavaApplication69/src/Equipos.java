@@ -1,8 +1,8 @@
 
 import java.util.ArrayList;
 
-
 public class Equipos {
+
     String nombre;
     int presupuesto;
     int copasgan;
@@ -17,6 +17,7 @@ public class Equipos {
         this.presupuesto = presupuesto;
         this.copasgan = copasgan;
         this.estadio = estadio;
+
     }
 
     public String getNombre() {
@@ -61,7 +62,7 @@ public class Equipos {
 
     @Override
     public String toString() {
-        return  nombre;
+        return nombre;
     }
-    
+
 }
