@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -95,6 +96,10 @@ public class Liga_Espanola extends javax.swing.JFrame {
         tf_nombreequipo1 = new javax.swing.JTextField();
         tf_presupuesto1 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
+        popuparbol = new javax.swing.JPopupMenu();
+        Ver_Jugador = new javax.swing.JMenuItem();
+        Eliminar_jugador = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jb_agregar = new javax.swing.JButton();
         jb_agregarEquipos = new javax.swing.JButton();
@@ -520,6 +525,19 @@ public class Liga_Espanola extends javax.swing.JFrame {
                     .addGap(36, 36, 36)))
         );
 
+        Ver_Jugador.setText("Ver Jugador");
+        Ver_Jugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver_JugadorActionPerformed(evt);
+            }
+        });
+        popuparbol.add(Ver_Jugador);
+
+        Eliminar_jugador.setText("Eliminar Jugador");
+        popuparbol.add(Eliminar_jugador);
+
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -566,6 +584,11 @@ public class Liga_Espanola extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Liga Espanola");
         jt_Distrub.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_Distrub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_DistrubMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jt_Distrub);
 
         jLabel17.setText("Distribucion");
@@ -826,16 +849,39 @@ public class Liga_Espanola extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_ModEquiposMouseClicked
 ///////////ELMINAR DE LA LISTA A LOS EQUIPOS
     private void EliminarlistadeequiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarlistadeequiposMouseClicked
-        DefaultListModel m = (DefaultListModel)ListaEquipos.getModel();
+        DefaultListModel m = (DefaultListModel) ListaEquipos.getModel();
         m.remove(ListaEquipos.getSelectedIndex());
-        
-            
+
+
     }//GEN-LAST:event_EliminarlistadeequiposMouseClicked
 
     private void EliminarlistadejugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarlistadejugadoresMouseClicked
-        DefaultListModel m = (DefaultListModel)ListaJugadores.getModel();
+        DefaultListModel m = (DefaultListModel) ListaJugadores.getModel();
         m.remove(ListaJugadores.getSelectedIndex());
     }//GEN-LAST:event_EliminarlistadejugadoresMouseClicked
+//ELIMINAR COSAS
+    private void jt_DistrubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_DistrubMouseClicked
+        if (evt.isMetaDown()) {
+            int row = jt_Distrub.getClosestRowForLocation(evt.getX(), evt.getY());
+            Object c = jt_Distrub.getSelectionPath().getLastPathComponent();
+            nodoselect = (DefaultMutableTreeNode) c;
+            if (nodoselect.getUserObject() instanceof Jugadores) {
+                jselect = (Jugadores) nodoselect.getUserObject();
+                popuparbol.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+
+        }
+    }//GEN-LAST:event_jt_DistrubMouseClicked
+
+    private void Ver_JugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_JugadorActionPerformed
+        JOptionPane.showMessageDialog(this, "nombre: " + jselect.getNombre());
+        JOptionPane.showMessageDialog(this, "Precio: " + jselect.getPrecio());
+        JOptionPane.showMessageDialog(this, "Posicion: " + jselect.getPos());
+        JOptionPane.showMessageDialog(this, "Disponivilidad : " + jselect.getDisponibilidad());
+        JOptionPane.showMessageDialog(this, "Tecnica: " + jselect.getTecnica());
+        JOptionPane.showMessageDialog(this, "Habilidad: " + jselect.getHabilidad());
+        JOptionPane.showMessageDialog(this, "resistencia: " + jselect.getResistencia());
+    }//GEN-LAST:event_Ver_JugadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -875,12 +921,14 @@ public class Liga_Espanola extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Agregar_Equpos;
     private javax.swing.JDialog Agregar_Jugadores;
+    private javax.swing.JMenuItem Eliminar_jugador;
     private javax.swing.JButton Eliminarlistadeequipos;
     private javax.swing.JButton Eliminarlistadejugadores;
     private javax.swing.JList<Equipos> ListaEquipos;
     private javax.swing.JList<Jugadores> ListaJugadores;
     private javax.swing.JDialog ModificarEquipos;
     private javax.swing.JDialog ModificarJugadores;
+    private javax.swing.JMenuItem Ver_Jugador;
     private javax.swing.ButtonGroup bg_posicion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -911,6 +959,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -922,6 +971,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
     private javax.swing.JButton jb_guardarEquipo;
     private javax.swing.JButton jb_modificarJugadores;
     private javax.swing.JTree jt_Distrub;
+    private javax.swing.JPopupMenu popuparbol;
     private javax.swing.JRadioButton rb_atacante;
     private javax.swing.JRadioButton rb_atacante1;
     private javax.swing.JRadioButton rb_defensa;
@@ -951,4 +1001,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
     private javax.swing.JTextField tf_tecnica;
     private javax.swing.JTextField tf_tecnica1;
     // End of variables declaration//GEN-END:variables
+DefaultMutableTreeNode nodoselect;
+    Jugadores jselect;
+
 }
