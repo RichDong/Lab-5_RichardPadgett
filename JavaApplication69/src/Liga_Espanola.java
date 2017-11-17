@@ -534,6 +534,11 @@ public class Liga_Espanola extends javax.swing.JFrame {
         popuparbol.add(Ver_Jugador);
 
         Eliminar_jugador.setText("Eliminar Jugador");
+        Eliminar_jugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_jugadorActionPerformed(evt);
+            }
+        });
         popuparbol.add(Eliminar_jugador);
 
         jMenuItem1.setText("jMenuItem1");
@@ -882,6 +887,12 @@ public class Liga_Espanola extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Habilidad: " + jselect.getHabilidad());
         JOptionPane.showMessageDialog(this, "resistencia: " + jselect.getResistencia());
     }//GEN-LAST:event_Ver_JugadorActionPerformed
+
+    private void Eliminar_jugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_jugadorActionPerformed
+        DefaultTreeModel t = (DefaultTreeModel)jt_Distrub.getModel();
+        t.removeNodeFromParent(nodoselect);
+        t.reload();
+    }//GEN-LAST:event_Eliminar_jugadorActionPerformed
 
     /**
      * @param args the command line arguments
