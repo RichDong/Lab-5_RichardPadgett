@@ -1,6 +1,9 @@
 
 import java.util.ArrayList;
 import javax.swing.ButtonModel;
+import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,6 +18,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
 
     ArrayList<Jugadores> jugtotal = new ArrayList();
     ArrayList<Equipos> equipost = new ArrayList();
+
     public Liga_Espanola() {
         initComponents();
 
@@ -44,7 +48,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
         tf_habilidad = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tf_Disp = new javax.swing.JTextField();
-        jb_Guardar = new javax.swing.JButton();
+        jb_Guardarjugadores = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         tf_tecnica = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -63,7 +67,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
         jb_guardarEquipo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_agregar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jb_agregarEquipos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaEquipos = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -71,9 +75,9 @@ public class Liga_Espanola extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_Distrub = new javax.swing.JTree();
         jLabel17 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jb_agregaralarbol = new javax.swing.JButton();
 
         jLabel2.setText("Nombre");
 
@@ -97,10 +101,13 @@ public class Liga_Espanola extends javax.swing.JFrame {
 
         jLabel7.setText("Disponibilidad");
 
-        jb_Guardar.setText("Guardar");
-        jb_Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_Guardarjugadores.setText("Guardar");
+        jb_Guardarjugadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jb_GuardarMouseClicked(evt);
+                jb_GuardarjugadoresMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jb_GuardarjugadoresMouseEntered(evt);
             }
         });
 
@@ -151,7 +158,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
                 .addContainerGap(111, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Agregar_JugadoresLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jb_Guardar)
+                .addComponent(jb_Guardarjugadores)
                 .addGap(75, 75, 75))
         );
         Agregar_JugadoresLayout.setVerticalGroup(
@@ -199,7 +206,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rb_portero)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jb_Guardar)
+                .addComponent(jb_Guardarjugadores)
                 .addGap(41, 41, 41))
         );
 
@@ -290,10 +297,17 @@ public class Liga_Espanola extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar Equipo");
+        jb_agregarEquipos.setText("Agregar Equipo");
+        jb_agregarEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_agregarEquiposMouseClicked(evt);
+            }
+        });
 
+        ListaEquipos.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(ListaEquipos);
 
+        ListaJugadores.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(ListaJugadores);
 
         jLabel15.setText("Equipos");
@@ -301,12 +315,17 @@ public class Liga_Espanola extends javax.swing.JFrame {
         jLabel16.setText("Jugadores");
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Liga Espanola");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(jTree1);
+        jt_Distrub.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jt_Distrub);
 
         jLabel17.setText("Distribucion");
 
-        jButton2.setText("Agregar");
+        jb_agregaralarbol.setText("Agregar");
+        jb_agregaralarbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_agregaralarbolMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -332,7 +351,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jb_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jb_agregarEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,7 +361,7 @@ public class Liga_Espanola extends javax.swing.JFrame {
                         .addGap(128, 128, 128))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(149, 149, 149)
-                .addComponent(jButton2)
+                .addComponent(jb_agregaralarbol)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -361,9 +380,9 @@ public class Liga_Espanola extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jb_agregaralarbol)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jb_agregarEquipos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_agregar)
                 .addContainerGap())
@@ -384,26 +403,63 @@ public class Liga_Espanola extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_agregarActionPerformed
 /////GUARDAR JUGADORES//////////////////
-    private void jb_GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_GuardarMouseClicked
+    private void jb_GuardarjugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_GuardarjugadoresMouseClicked
+        DefaultListModel modeloj = (DefaultListModel) ListaJugadores.getModel();
         if (rb_atacante.isSelected()) {
-            jugtotal.add(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Atacante", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
+            modeloj.addElement(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Atacante", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
         }
         if (rb_defensa.isSelected()) {
-            jugtotal.add(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Defensa", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
+            modeloj.addElement(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Defensa", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
         }
         if (rb_mediocampo.isSelected()) {
-            jugtotal.add(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Medio Campista", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
+            modeloj.addElement(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Medio Campista", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
         }
         if (rb_portero.isSelected()) {
-            jugtotal.add(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Portero", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
+            modeloj.addElement(new Jugadores(tf_nombrej.getText(), Integer.parseInt(tf_precio.getText()), "Portero", tf_Disp.getText(), Double.parseDouble(tf_habilidad.getText()), Double.parseDouble(tf_tecnica.getText()), Double.parseDouble(tf_resist.getText())));
         }
+        tf_nombrej.setText("");
+        tf_precio.setText("");
+        tf_Disp.setText("");
+        tf_habilidad.setText("");
+        tf_tecnica.setText("");
+        tf_resist.setText("");
 
-    }//GEN-LAST:event_jb_GuardarMouseClicked
+
+    }//GEN-LAST:event_jb_GuardarjugadoresMouseClicked
 /////////////GUARDAR EUIPOS////////////////////////////
     private void jb_guardarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarEquipoMouseClicked
-        equipost.add(new Equipos(tf_nombreequipo.getText(),Integer.parseInt(tf_presupuesto.getText()),Integer.parseInt(tf_copas.getText()),tf_nombreestadio.getText()));
+
+        DefaultListModel modelol = (DefaultListModel) ListaEquipos.getModel();
+        modelol.addElement(new Equipos(tf_nombreequipo.getText(), Integer.parseInt(tf_presupuesto.getText()), Integer.parseInt(tf_copas.getText()), tf_nombreestadio.getText()));
+        DefaultTreeModel m = (DefaultTreeModel) jt_Distrub.getModel();
+        DefaultMutableTreeNode LigaEspanola = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode Equipo;
+        Equipo = new DefaultMutableTreeNode(new Equipos(tf_nombreequipo.getText(), Integer.parseInt(tf_presupuesto.getText()), Integer.parseInt(tf_copas.getText()), tf_nombreestadio.getText()));
+        LigaEspanola.add(Equipo);
+        m.reload();
+        tf_nombreestadio.setText("");
+        tf_presupuesto.setText("");
+        tf_copas.setText("");
+        tf_nombreestadio.setText("");
+
 
     }//GEN-LAST:event_jb_guardarEquipoMouseClicked
+
+    private void jb_agregarEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarEquiposMouseClicked
+        Agregar_Equpos.setModal(true);
+        Agregar_Equpos.pack();
+        Agregar_Equpos.setLocationRelativeTo(this);
+        Agregar_Equpos.setVisible(true);
+    }//GEN-LAST:event_jb_agregarEquiposMouseClicked
+/////////////METER AL ARBOL /////////////////
+    private void jb_agregaralarbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregaralarbolMouseClicked
+
+
+    }//GEN-LAST:event_jb_agregaralarbolMouseClicked
+
+    private void jb_GuardarjugadoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_GuardarjugadoresMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_GuardarjugadoresMouseEntered
 
     /**
      * @param args the command line arguments
@@ -446,8 +502,6 @@ public class Liga_Espanola extends javax.swing.JFrame {
     private javax.swing.JList<String> ListaEquipos;
     private javax.swing.JList<String> ListaJugadores;
     private javax.swing.ButtonGroup bg_posicion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -468,10 +522,12 @@ public class Liga_Espanola extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JButton jb_Guardar;
+    private javax.swing.JButton jb_Guardarjugadores;
     private javax.swing.JButton jb_agregar;
+    private javax.swing.JButton jb_agregarEquipos;
+    private javax.swing.JButton jb_agregaralarbol;
     private javax.swing.JButton jb_guardarEquipo;
+    private javax.swing.JTree jt_Distrub;
     private javax.swing.JRadioButton rb_atacante;
     private javax.swing.JRadioButton rb_defensa;
     private javax.swing.JRadioButton rb_mediocampo;

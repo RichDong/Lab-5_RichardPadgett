@@ -1,5 +1,6 @@
 
 public class Jugadores {
+
     String nombre;
     int precio;
     String pos;
@@ -79,8 +80,7 @@ public class Jugadores {
 
     @Override
     public String toString() {
-        return "Jugadores{" + "nombre=" + nombre + ", precio=" + precio + ", pos=" + pos + ", disponibilidad=" + disponibilidad + ", habilidad=" + habilidad + ", tecnica=" + tecnica + ", resistencia=" + resistencia + '}';
+        return nombre;
     }
-       
-    
+
 }
