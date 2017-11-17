@@ -108,6 +108,8 @@ public class Liga_Espanola extends javax.swing.JFrame {
         jt_Distrub = new javax.swing.JTree();
         jLabel17 = new javax.swing.JLabel();
         jb_agregaralarbol = new javax.swing.JButton();
+        Eliminarlistadejugadores = new javax.swing.JButton();
+        Eliminarlistadeequipos = new javax.swing.JButton();
 
         jLabel2.setText("Nombre");
 
@@ -575,6 +577,20 @@ public class Liga_Espanola extends javax.swing.JFrame {
             }
         });
 
+        Eliminarlistadejugadores.setText("Eliminar");
+        Eliminarlistadejugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminarlistadejugadoresMouseClicked(evt);
+            }
+        });
+
+        Eliminarlistadeequipos.setText("Eliminar");
+        Eliminarlistadeequipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminarlistadeequiposMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -608,8 +624,12 @@ public class Liga_Espanola extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addGap(128, 128, 128))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(jb_agregaralarbol)
+                .addGap(83, 83, 83)
+                .addComponent(Eliminarlistadeequipos)
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Eliminarlistadejugadores)
+                    .addComponent(jb_agregaralarbol))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -628,8 +648,12 @@ public class Liga_Espanola extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_agregaralarbol)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_agregaralarbol)
+                    .addComponent(Eliminarlistadeequipos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Eliminarlistadejugadores)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jb_agregarEquipos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_agregar)
@@ -800,6 +824,18 @@ public class Liga_Espanola extends javax.swing.JFrame {
         m.reload();
 
     }//GEN-LAST:event_jb_ModEquiposMouseClicked
+///////////ELMINAR DE LA LISTA A LOS EQUIPOS
+    private void EliminarlistadeequiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarlistadeequiposMouseClicked
+        DefaultListModel m = (DefaultListModel)ListaEquipos.getModel();
+        m.remove(ListaEquipos.getSelectedIndex());
+        
+            
+    }//GEN-LAST:event_EliminarlistadeequiposMouseClicked
+
+    private void EliminarlistadejugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarlistadejugadoresMouseClicked
+        DefaultListModel m = (DefaultListModel)ListaJugadores.getModel();
+        m.remove(ListaJugadores.getSelectedIndex());
+    }//GEN-LAST:event_EliminarlistadejugadoresMouseClicked
 
     /**
      * @param args the command line arguments
@@ -839,6 +875,8 @@ public class Liga_Espanola extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Agregar_Equpos;
     private javax.swing.JDialog Agregar_Jugadores;
+    private javax.swing.JButton Eliminarlistadeequipos;
+    private javax.swing.JButton Eliminarlistadejugadores;
     private javax.swing.JList<Equipos> ListaEquipos;
     private javax.swing.JList<Jugadores> ListaJugadores;
     private javax.swing.JDialog ModificarEquipos;
